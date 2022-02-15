@@ -1,9 +1,10 @@
 let fromDate = "2021-11-03";
 let toDate = "2022-02-03";
+let currency = 'EUR';
 let myChart;
 
 const loadData = () => {
-    axios.get(`http://api.coindesk.com/v1/bpi/historical/close.json?start=${fromDate}&end=${toDate}`)
+    axios.get(`http://api.coindesk.com/v1/bpi/historical/close.json?start=${fromDate}&end=${toDate}&currency=${currency}`)
         .then((data) => {
             const dates = Object.keys(data.data.bpi);
             const bpi = Object.values(data.data.bpi);
@@ -41,5 +42,10 @@ document.getElementById('from-date').addEventListener('change', (event) => {
 document.getElementById('to-date').addEventListener('change', (event) => {
     myChart.destroy();
     toDate = event.target.value;
+    loadData();
+})
+document.getElementById('currencies').addEventListener('change', (event) => {
+    myChart.destroy();
+    currency = event.target.value;
     loadData();
 })
