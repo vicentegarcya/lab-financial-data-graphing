@@ -2,6 +2,8 @@ let fromDate = "2021-11-03";
 let toDate = "2022-02-03";
 let currency = 'EUR';
 let myChart;
+let maxValue;
+let minValue;
 
 const loadData = () => {
     axios.get(`http://api.coindesk.com/v1/bpi/historical/close.json?start=${fromDate}&end=${toDate}&currency=${currency}`)
@@ -27,6 +29,10 @@ const loadData = () => {
                     }]
                 },  
             });
+            maxValue = Math.max(...myChart.data.datasets[0].data).toFixed(2);
+            minValue = Math.min(...myChart.data.datasets[0].data).toFixed(2);
+            document.getElementById('max-value').innerHTML = `Max: ${maxValue} ${currency}`;
+            document.getElementById('min-value').innerHTML = `Min: ${minValue} ${currency}`;
         })
         .catch(err => console.log(err));
 }
@@ -49,3 +55,5 @@ document.getElementById('currencies').addEventListener('change', (event) => {
     currency = event.target.value;
     loadData();
 })
+
+

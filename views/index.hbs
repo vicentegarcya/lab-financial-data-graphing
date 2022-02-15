@@ -1,17 +1,27 @@
 <h1>Bitcoin Price Index Visualization</h1>
 <div id="canvas-div">
-    From: <input id="from-date" type="date">
-    To: <input id="to-date" type="date">
-    <label for="currencies">Currency: </label>
-    <select name="currencies" id="currencies">
-        <option value="USD">USD</option>
-        <option value="EUR">EUR</option>
-        <option value="GBP">GBP</option>
-        <option value="CHF">CHF</option>
-        <option value="MXN">MXN</option>
-        <option value="SAR">SAR</option>
-        <option value="ARS">ARS</option>
-    </select>
+    <div id="filters-values-div">
+        <div id="filters">
+            <h2>Filters</h3>
+            From: <input id="from-date" type="date">
+            To: <input id="to-date" type="date">
+            <label for="currencies">Currency: </label>
+            <select name="currencies" id="currencies">
+                <option value="EUR" selected>EUR</option>
+                <option value="USD">USD</option>
+                <option value="GBP">GBP</option>
+                <option value="CHF">CHF</option>
+                <option value="MXN">MXN</option>
+                <option value="SAR">SAR</option>
+                <option value="ARS">ARS</option>
+            </select>
+        </div>
+        <div id="min-max-values">
+            <h2>Values</h3>
+            <p id="max-value"></p>
+            <p id="min-value"></p>
+        </div>
+    </div>
     <canvas id="myChart" width="600" height="400"></canvas>
 </div>
 

@@ -10,3 +10,14 @@ a {
 #canvas-div {
   width: 70%;
 }
+
+#filters-values-div {
+  display: flex;
+  justify-content: space-between;
+}
+
+#min-max-values {
+  text-align: right;
+}
+
+
